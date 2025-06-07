@@ -1,5 +1,6 @@
 
 import { ExternalLink, Github } from 'lucide-react';
+import Widget from './Widget';
 
 interface ProjectCardProps {
   title: string;
@@ -12,9 +13,9 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, description, technologies, imageUrl, liveUrl, githubUrl }: ProjectCardProps) => {
   return (
-    <div className="bg-card border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group">
+    <Widget className="group">
       {imageUrl && (
-        <div className="mb-4 overflow-hidden rounded-md">
+        <div className="mb-4 overflow-hidden rounded-md -mx-2 -mt-2">
           <img 
             src={imageUrl} 
             alt={title}
@@ -24,10 +25,10 @@ const ProjectCard = ({ title, description, technologies, imageUrl, liveUrl, gith
       )}
       
       <div className="flex justify-between items-start mb-3">
-        <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+        <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
           {title}
         </h3>
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 opacity-60 group-hover:opacity-100 transition-opacity">
           {githubUrl && (
             <a 
               href={githubUrl}
@@ -35,7 +36,7 @@ const ProjectCard = ({ title, description, technologies, imageUrl, liveUrl, gith
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              <Github size={20} />
+              <Github size={18} />
             </a>
           )}
           {liveUrl && (
@@ -45,13 +46,13 @@ const ProjectCard = ({ title, description, technologies, imageUrl, liveUrl, gith
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              <ExternalLink size={20} />
+              <ExternalLink size={18} />
             </a>
           )}
         </div>
       </div>
       
-      <p className="text-muted-foreground mb-4 leading-relaxed">
+      <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
         {description}
       </p>
       
@@ -59,13 +60,13 @@ const ProjectCard = ({ title, description, technologies, imageUrl, liveUrl, gith
         {technologies.map((tech, index) => (
           <span 
             key={index}
-            className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full border border-primary/20"
+            className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md border border-primary/20 font-medium"
           >
             {tech}
           </span>
         ))}
       </div>
-    </div>
+    </Widget>
   );
 };
 

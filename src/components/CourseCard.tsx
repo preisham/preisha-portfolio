@@ -19,19 +19,19 @@ const CourseCard = ({ courseCode, title, instructor, isOngoing }: CourseCardProp
   };
 
   return (
-    <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-      <td className={`py-3 px-4 ${getCourseLevelClass(courseCode)}`}>
+    <tr className="border-b border-gray-50 last:border-b-0 hover:bg-gray-25 transition-colors">
+      <td className={`py-3 px-4 ${getCourseLevelClass(courseCode)} text-sm`}>
         {courseCode}
       </td>
       <td className="py-3 px-4">
         <div className="flex flex-col">
-          <span className="font-medium text-foreground">
+          <span className="font-medium text-foreground text-sm">
             {title}
             {isOngoing && <em className="ml-2 text-muted-foreground font-normal">*</em>}
           </span>
           {instructor && (
-            <span className="text-sm text-muted-foreground italic">
-              taught by {instructor}
+            <span className="text-xs text-muted-foreground italic mt-1">
+              {instructor}
             </span>
           )}
         </div>

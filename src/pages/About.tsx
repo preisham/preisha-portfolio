@@ -1,5 +1,6 @@
 
 import Layout from '../components/Layout';
+import Widget from '../components/Widget';
 
 const About = () => {
   const skills = [
@@ -14,94 +15,91 @@ const About = () => {
 
   return (
     <Layout>
-      <div className="max-w-3xl mx-auto animate-fade-in">
-        <h1 className="text-4xl font-bold text-foreground mb-8">About Me</h1>
+      <div className="animate-fade-in">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground mb-4">About Me</h1>
+          <p className="text-muted-foreground max-w-2xl">
+            Learn more about my background, interests, and what drives me as an engineer.
+          </p>
+        </div>
         
-        <div className="prose prose-lg max-w-none">
-          <div className="mb-12">
-            <img 
-              src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&fit=crop&crop=face"
-              alt="Profile"
-              className="w-48 h-48 rounded-full mx-auto mb-8 object-cover shadow-lg"
-            />
-          </div>
-
-          <div className="space-y-6 text-muted-foreground leading-relaxed">
-            <p>
-              Hello! I'm a passionate engineering student with a deep interest in technology and innovation. 
-              My journey in engineering began with a curiosity about how things work and a desire to build 
-              solutions that make a positive impact on the world.
-            </p>
-            
-            <p>
-              Currently pursuing my degree in Mechanical Engineering, I've developed a strong foundation in 
-              both theoretical principles and practical applications. My coursework has exposed me to various 
-              engineering disciplines, from thermodynamics and fluid mechanics to materials science and design.
-            </p>
-            
-            <p>
-              Beyond the classroom, I'm actively involved in projects that bridge the gap between engineering 
-              and technology. I enjoy working on web development projects, exploring sustainable design solutions, 
-              and experimenting with emerging technologies like IoT and machine learning.
-            </p>
-          </div>
-
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
-            <div className="bg-card border border-gray-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-foreground mb-4 border-b-2 border-primary pb-2">
-                Technical Skills
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill, index) => (
-                  <span 
-                    key={index}
-                    className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full border border-primary/20"
-                  >
-                    {skill}
-                  </span>
-                ))}
+        <div className="widget-grid">
+          {/* Profile Widget */}
+          <Widget className="md:col-span-2">
+            <div className="flex flex-col md:flex-row gap-6">
+              <img 
+                src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=200&h=200&fit=crop&crop=face"
+                alt="Profile"
+                className="w-32 h-32 rounded-lg object-cover mx-auto md:mx-0 flex-shrink-0"
+              />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Hello! I'm a passionate engineering student with a deep interest in technology and innovation. 
+                  My journey in engineering began with a curiosity about how things work and a desire to build 
+                  solutions that make a positive impact on the world.
+                </p>
+                <p>
+                  Currently pursuing my degree in Mechanical Engineering, I've developed a strong foundation in 
+                  both theoretical principles and practical applications. My coursework has exposed me to various 
+                  engineering disciplines, from thermodynamics and fluid mechanics to materials science and design.
+                </p>
               </div>
             </div>
+          </Widget>
 
-            <div className="bg-card border border-gray-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-foreground mb-4 border-b-2 border-primary pb-2">
-                Interests
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {interests.map((interest, index) => (
-                  <span 
-                    key={index}
-                    className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full border border-primary/20"
-                  >
-                    {interest}
-                  </span>
-                ))}
-              </div>
+          {/* Skills Widget */}
+          <Widget>
+            <h3 className="text-lg font-semibold text-foreground mb-4">Technical Skills</h3>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill, index) => (
+                <span 
+                  key={index}
+                  className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-md border border-primary/20 font-medium"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
-          </div>
+          </Widget>
 
-          <div className="mt-12">
-            <h3 className="text-2xl font-semibold text-foreground mb-6">Experience</h3>
+          {/* Interests Widget */}
+          <Widget>
+            <h3 className="text-lg font-semibold text-foreground mb-4">Interests</h3>
+            <div className="flex flex-wrap gap-2">
+              {interests.map((interest, index) => (
+                <span 
+                  key={index}
+                  className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-md border border-primary/20 font-medium"
+                >
+                  {interest}
+                </span>
+              ))}
+            </div>
+          </Widget>
+
+          {/* Experience Widget */}
+          <Widget className="md:col-span-2">
+            <h3 className="text-lg font-semibold text-foreground mb-6">Experience</h3>
             <div className="space-y-6">
-              <div className="bg-card border border-gray-200 rounded-lg p-6">
-                <h4 className="text-lg font-semibold text-foreground">Engineering Intern</h4>
-                <p className="text-primary mb-2">Company Name • Summer 2024</p>
-                <p className="text-muted-foreground">
+              <div className="border-l-2 border-primary pl-4">
+                <h4 className="font-semibold text-foreground">Engineering Intern</h4>
+                <p className="text-primary text-sm mb-2">Company Name • Summer 2024</p>
+                <p className="text-muted-foreground text-sm">
                   Worked on renewable energy projects, collaborating with cross-functional teams to develop 
                   sustainable solutions. Gained hands-on experience with CAD software and project management.
                 </p>
               </div>
               
-              <div className="bg-card border border-gray-200 rounded-lg p-6">
-                <h4 className="text-lg font-semibold text-foreground">Research Assistant</h4>
-                <p className="text-primary mb-2">University Lab • 2023-Present</p>
-                <p className="text-muted-foreground">
+              <div className="border-l-2 border-primary pl-4">
+                <h4 className="font-semibold text-foreground">Research Assistant</h4>
+                <p className="text-primary text-sm mb-2">University Lab • 2023-Present</p>
+                <p className="text-muted-foreground text-sm">
                   Assisting with research on advanced materials and their applications in sustainable engineering. 
                   Contributing to publications and presenting findings at conferences.
                 </p>
               </div>
             </div>
-          </div>
+          </Widget>
         </div>
       </div>
     </Layout>

@@ -53,35 +53,20 @@ const Projects = () => {
   return (
     <Layout>
       <div className="animate-fade-in">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Projects</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground mb-4">Projects</h1>
+          <p className="text-muted-foreground max-w-2xl">
             A collection of engineering and development projects I've worked on, 
             ranging from web applications to robotics and sustainable energy solutions.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="widget-grid">
           {projects.map((project, index) => (
             <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 100}ms` }}>
               <ProjectCard {...project} />
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-muted-foreground mb-4">
-            Want to see more of my work?
-          </p>
-          <a 
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 font-medium transition-colors"
-          >
-            <span>Visit my GitHub</span>
-            <span>→</span>
-          </a>
         </div>
       </div>
     </Layout>

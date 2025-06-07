@@ -1,6 +1,7 @@
 
 import Layout from '../components/Layout';
 import BlogCard from '../components/BlogCard';
+import Widget from '../components/Widget';
 
 const Blog = () => {
   const blogPosts = [
@@ -59,55 +60,39 @@ const Blog = () => {
   return (
     <Layout>
       <div className="animate-fade-in">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Blog</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground mb-4">Blog</h1>
+          <p className="text-muted-foreground max-w-2xl">
             Thoughts on engineering, technology, and everything in between. 
             Sharing insights from my academic journey and project experiences.
           </p>
         </div>
 
-        {/* Categories Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, index) => (
-            <button
-              key={index}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                index === 0 
-                  ? 'bg-primary text-primary-foreground' 
-                  : 'bg-secondary text-secondary-foreground hover:bg-primary/10 hover:text-primary'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+        {/* Categories Filter Widget */}
+        <Widget className="mb-8">
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                  index === 0 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'bg-gray-50 text-muted-foreground hover:bg-primary/10 hover:text-primary'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </Widget>
 
         {/* Blog Posts Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="widget-grid">
           {blogPosts.map((post, index) => (
             <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 100}ms` }}>
               <BlogCard {...post} />
             </div>
           ))}
-        </div>
-
-        {/* Newsletter Signup */}
-        <div className="mt-16 text-center bg-card border border-gray-200 rounded-lg p-8">
-          <h3 className="text-2xl font-semibold text-foreground mb-4">Stay Updated</h3>
-          <p className="text-muted-foreground mb-6">
-            Subscribe to get notified about new posts and project updates.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            />
-            <button className="bg-primary hover:bg-primary/80 text-primary-foreground px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105">
-              Subscribe
-            </button>
-          </div>
         </div>
       </div>
     </Layout>
