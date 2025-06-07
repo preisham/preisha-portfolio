@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import DarkModeToggle from './DarkModeToggle';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,6 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
     { name: 'Coursework', path: '/coursework' },
     { name: 'Blog', path: '/blog' },
@@ -18,7 +18,7 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="border-b border-gray-200 bg-white sticky top-0 z-50">
+    <nav className="border-b border-border bg-background sticky top-0 z-50">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Name */}
@@ -27,7 +27,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -42,20 +42,24 @@ const Navigation = () => {
                 )}
               </Link>
             ))}
+            <DarkModeToggle />
           </div>
 
           {/* Mobile menu button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center space-x-4">
+            <DarkModeToggle />
+            <button
+              className="md:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t border-border">
             {navItems.map((item) => (
               <Link
                 key={item.name}
